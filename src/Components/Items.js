@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {FaTrash} from 'react-icons/fa'
 
-const Items = () => {
+const Items = (props) => {
 
     const[done,setDone] = useState(false);
 
@@ -11,14 +11,14 @@ const Items = () => {
     <div onClick={()=> setDone(!done)} className={`items-center select-none cursor-pointer w-full border-b p-3 flex justify-between`}>
        <div className=''>
             <span className='pr-2 text-[14px] text-slate-400'>
-                10:30 A.M
+                {props.time}
             </span>
             <span className={`${done===true ? 'line-through' : ''} text-[20px]`}>
-                Item
-            </span> 
+                {props.item}
+            </span>  
        </div>
        <div className='text-red-800'>
-            <FaTrash/>
+            <FaTrash onClick={()=>props.removeHandler(props.id)} />
        </div> 
     </div>
   )

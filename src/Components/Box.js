@@ -4,8 +4,8 @@ import Items from './Items'
 const Box = (props) => {
 
     const items = props.data.map(
-        (singleData, key)=>{
-            return <Items key={key} item={singleData.item} time={singleData.time} />
+        (singleData, index)=>{
+            return <Items removeHandler={props.removeHandler} key={index} id={index}  item={singleData.item} time={singleData.time} />
         }
     )
 

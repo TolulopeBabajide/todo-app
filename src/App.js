@@ -5,6 +5,20 @@ import Box from './Components/Box'
 const App = () => {
   const [todos,setToDo]= useState([]);
 
+  const removeTodo = (id) =>{
+    const newToDos= todos.filter(
+      (d,index)=>{
+        if (index!==id){
+            return true;
+        } else{
+          return false;
+        }
+      }
+    )
+
+    setToDo(newToDos);
+  }
+
   const addToDoHandler =(item) => {
     setToDo(
      [ ...todos,
@@ -27,7 +41,7 @@ const App = () => {
 
           
               <Input handler={addToDoHandler} />
-              <Box data={todos} />
+              <Box data={todos} removeHandler={removeTodo}/>
 
             
           </div>
